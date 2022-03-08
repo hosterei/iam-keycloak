@@ -7,7 +7,7 @@ spec:
   selector:
     app: travelware-keycloak-prod
   ports:
-    - name: keycloak-instance
+    - name: travelware-keycloak-prod
       protocol: TCP
       port: 80
-      targetPort: 8443
+      targetPort: 8080
