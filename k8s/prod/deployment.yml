@@ -24,15 +24,13 @@ spec:
           - name: KC_HOSTNAME
             value: id.yannherren.xyz
           - name: KC_DB_URL
-            value: travelware-keycloak-postgres-prod
-          - name: KC_DB
-            value: postgres
+            value: travelware-keycloak-postgres-prod-postgresql
           - name: KC_DB_USERNAME
             value: travelware-keycloak-db-prod
           - name: KC_DB_URL_DATABASE
             value: travelware-keycloak-db-prod
           - name: KC_HTTP_ENABLED
-            value: "false"
+            value: "true"
           - name: KC_DB_PASSWORD
             valueFrom:
               secretKeyRef:
