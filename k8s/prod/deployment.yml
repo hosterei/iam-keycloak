@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: travelware-keycloak-prod
-          image: quay.io/keycloak/keycloak:17.0.0
+          image: ghcr.io/hycmedia/travelware-keycloak/travelware-keycloak:0.0.1
           ports:
             - containerPort: 8443
           env:
@@ -26,9 +26,13 @@ spec:
           - name: KC_DB_URL
             value: travelware-keycloak-postgres-prod
           - name: KC_DB
-            value: travelware-keycloak-db-prod
+            value: postgres
           - name: KC_DB_USERNAME
             value: travelware-keycloak-db-prod
+          - name: KC_DB_URL_DATABASE
+            value: travelware-keycloak-db-prod
+          - name: KC_HTTP_ENABLED
+            value: "false"
           - name: KC_DB_PASSWORD
             valueFrom:
               secretKeyRef:
