@@ -1,6 +1,11 @@
-FROM quay.io/keycloak/keycloak:17.0.0
+FROM quay.io/keycloak/keycloak-x:16.1.1 as builder
 
-RUN kc.sh build
+ENV KC_METRICS_ENABLED=true
+ENV KC_FEATURES=token-exchange
+RUN /opt/keycloak/bin/kc.sh build
 
-EXPOSE 8080
-CMD kc.sh start
+FROM quay.io/keycloak/keycloak-x:16.1.1
+COPY --from=builder /opt/keycloak/lib/quarkus/ /opt/keycloak/lib/quarkus/
+WORKDIR /opt/keycloak
+
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start"]
