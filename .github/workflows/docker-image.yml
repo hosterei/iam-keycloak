@@ -25,4 +25,4 @@ jobs:
           github-token: ${{ secrets.RegistryToken }}
           image-name: travelware-keycloak
           image-tag: 0.0.1
-          build-context: .docker
+          build-context: ./.docker
