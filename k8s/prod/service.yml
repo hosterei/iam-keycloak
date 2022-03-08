@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: travelware-keycloak-prod
+  namespace: travelware
+spec:
+  selector:
+    app: travelware-keycloak-prod
+  ports:
+    - name: keycloak-instance
+      protocol: TCP
+      port: 80
+      targetPort: 8080
