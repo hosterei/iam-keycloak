@@ -20,15 +20,16 @@ spec:
           image: ghcr.io/hycmedia/travelware-keycloak/travelware-keycloak:0.0.1
           ports:
             - containerPort: 8080
+            - containerPort: 5432
           env:
           - name: KC_HOSTNAME
             value: id.yannherren.xyz
-          - name: DB_ADDR
-            value: travelware-keycloak-postgres-prod-postgresql.travelware
+          - name: KC_DB_URL
+            value: jdbc:postgresql://travelware-keycloak-prod-postgresql/travelware-keycloak-db-prod
           - name: DB_DATABASE
             value: travelware-keycloak-db-prod
-          - name: DB_USER
-            value: travelware-keycloak-db-prod
+          - name: KC_DB_USERNAME
+            value: travelware-keycloak-db-user-prod
           - name: KC_HTTP_ENABLED
             value: "true"
           - name: KEYCLOAK_ADMIN
@@ -36,12 +37,12 @@ spec:
           - name: KEYCLOAK_ADMIN_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: travelware-keycloak-postgres-prod-postgresql
+                name: travelware-keycloak-prod-postgresql
                 key: password
-          - name: DB_PASSWORD
+          - name: KC_DB_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: travelware-keycloak-postgres-prod-postgresql
-                key: postgres-password
+                name: travelware-keycloak-prod-postgresql
+                key: password
 
       

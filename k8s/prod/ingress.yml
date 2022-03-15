@@ -4,20 +4,17 @@ metadata:
   name: travelware-keycloak-prod
   namespace: travelware
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-    nginx.ingress.kubernetes.io/use-regex: "true"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    traefik.ingress.kubernetes.io/router.tls.certresolver: le
 spec:
-  ingressClassName: nginx
   tls:
     - hosts:
         - id.yannherren.xyz
-      secretName: id-yannherren-xyz-tls
   rules:
     - host: id.yannherren.xyz
       http:
         paths:
-          - path: /(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
