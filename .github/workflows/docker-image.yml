@@ -23,6 +23,6 @@ jobs:
         with:
           # GitHub token to push Docker image to GitHub Packages
           github-token: ${{ secrets.RegistryToken }}
-          image-name: travelware-keycloak
+          image-name: iam-keycloak
           image-tag: 0.0.1
           dockerfile: .docker/Dockerfile
